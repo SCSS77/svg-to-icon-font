@@ -1,0 +1,14 @@
+{
+  "name": "svg-to-iconfont",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "gulp icons"
+  },
+  "dependencies": {
+    "gulp": "^4.0.2",
+    "gulp-iconfont": "^11.0.0",
+    "gulp-iconfont-css": "^3.0.0",
+    "gulp-svgmin": "^4.1.0"
+  }
+}
