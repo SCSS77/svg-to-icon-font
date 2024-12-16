@@ -6,7 +6,7 @@ var svgmin = require('gulp-svgmin');
 
 var fontName = 'byrfont'; 
 
-gulp.task('iconfont', function() {
+gulp.task('icons', function() {
   return gulp.src('assets/icons/*.svg')
     .pipe(svgmin())
     .pipe(iconfontCss({
@@ -25,4 +25,4 @@ gulp.task('iconfont', function() {
     .pipe(gulp.dest('dist/fonts'));
 });
 
-gulp.task('default', gulp.series('iconfont'));
+gulp.task('default', gulp.series('icons'));
