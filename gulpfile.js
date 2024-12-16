@@ -1,12 +1,13 @@
-const gulp = require('gulp');
-const iconfont = require('gulp-iconfont');
-const iconfontCss = require('gulp-iconfont-css');
-const svgmin = require('gulp-svgmin');
+'use strict';
+var gulp = require('gulp');
+var iconfont = require('gulp-iconfont');
+var iconfontCss = require('gulp-iconfont-css');
+var svgmin = require('gulp-svgmin');
 
-const fontName = 'byrfont';
+var fontName = 'byrfont'; 
 
-gulp.task('icons', () => {
-  return gulp.src(['assets/icons/*.svg'])
+gulp.task('iconfont', function() {
+  return gulp.src('assets/icons/*.svg')
     .pipe(svgmin())
     .pipe(iconfontCss({
       fontName: fontName,
@@ -16,16 +17,12 @@ gulp.task('icons', () => {
     }))
     .pipe(iconfont({
       fontName: fontName,
-      prependUnicode: true,
+      prependUnicode: false,
       formats: ['eot', 'woff', 'woff2', 'ttf'],
-      timestamp: Math.floor(Date.now() / 1000),
       normalize: true,
-      fontHeight: 1001
+      timestamp: Math.floor(Date.now() / 1000)
     }))
-    .on('glyphs', function (glyphs, options) {
-      console.log(glyphs, options);
-    })
     .pipe(gulp.dest('dist/fonts'));
 });
 
-gulp.task('default', gulp.series('icons'));
+gulp.task('default', gulp.series('iconfont'));

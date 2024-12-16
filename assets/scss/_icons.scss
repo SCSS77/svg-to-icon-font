@@ -1,28 +1,23 @@
 @font-face {
-    font-family: 'byrfont';
-    src: url('/dist/fonts/byrfont.eot');
-    src: url('/dist/fonts/byrfont.eot?#iefix') format('embedded-opentype'),
-         url('/dist/fonts/byrfont.woff2') format('woff2'),
-         url('/dist/fonts/byrfont.woff') format('woff'),
-         url('/dist/fonts/byrfont.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
+  font-family: "<%= fontName %>";
+  src: url('<%= fontPath %><%= fontName %>.eot');
+  src: url('<%= fontPath %><%= fontName %>.eot?#iefix') format('eot'),
+  url('<%= fontPath %><%= fontName %>.woff2') format('woff2'),
+  url('<%= fontPath %><%= fontName %>.woff') format('woff'),
+  url('<%= fontPath %><%= fontName %>.ttf') format('truetype'),
+  url('<%= fontPath %><%= fontName %>.svg#<%= fontName %>') format('svg');
 }
 
 .icon {
-    display: inline-block;
-    font-family: 'byrfont' !important;
-    speak: none;
-    font-style: normal;
-    font-variant: normal;
-    text-transform: none;
-    line-height: 1;
+  font-family: "<%= fontName %>";
+  font-style: normal;
+  font-weight: normal;
+  text-decoration: none;
+  display: inline-block;
 }
 
-.icon-home:before {
-    content: "\e900";
-}
-
-.icon-user:before {
-    content: "\e901";
-}
+<% _.each(glyphs, function(glyph) { %>
+  .icon-<%= glyph.fileName %>::before {
+    content: "\<%= glyph.codePoint %>";
+  }
+<% }); %>
